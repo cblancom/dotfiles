@@ -59,6 +59,14 @@ return {
 
     {
         "kkoomen/vim-doge",
+    },
+
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            -- add any options here
     }
+}
+
 }
 
