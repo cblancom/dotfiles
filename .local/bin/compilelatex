@@ -1,14 +1,28 @@
+
 #!/bin/bash
 
 # Check if filename is provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <filename>"
+if [ -z "$2" ]; then
+  echo "Usage: $0 <pdf|lua> <filename>"
   exit 1
 fi
 
-FILENAME=$1
+COMPILER="$1"
+FILENAME="$2"
 BASENAME=$(basename "$FILENAME" .tex)
 
-# Run pdflatex, bibtex, and pdflatex two more times
-pdflatex "$FILENAME" && bibtex "$BASENAME" && pdflatex "$FILENAME" && pdflatex "$FILENAME"
+if [ "$COMPILER" != "pdf" ] && [ "$COMPILER" != "lua" ]; then
+  echo "Invalid compiler option. Use 'pdf' or 'lua'."
+  exit 1
+fi
+
+# Determine the LaTeX compiler based on the flag
+if [ "$COMPILER" == "pdf" ]; then
+  LATEX_COMPILER="pdflatex"
+else
+  LATEX_COMPILER="lualatex"
+fi
+
+# Run the compilation process
+"$LATEX_COMPILER" "$FILENAME" && bibtex "$BASENAME" && "$LATEX_COMPILER" "$FILENAME" && "$LATEX_COMPILER" "$FILENAME"
 
