@@ -23,6 +23,7 @@ else
   LATEX_COMPILER="lualatex"
 fi
 
-# Run the compilation process
-"$LATEX_COMPILER" "$FILENAME" && bibtex "$BASENAME" && "$LATEX_COMPILER" "$FILENAME" && "$LATEX_COMPILER" "$FILENAME"
+# Run the compilation process with -shell-escape
+"$LATEX_COMPILER" -shell-escape "$FILENAME" && bibtex "$BASENAME" && \
+"$LATEX_COMPILER" -shell-escape "$FILENAME" && "$LATEX_COMPILER" -shell-escape "$FILENAME"
 

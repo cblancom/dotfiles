@@ -11,7 +11,8 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
 -- colorscheme
-vim.cmd.colorscheme = "catppuccin-mocha"
+-- vim.cmd.colorscheme = "catppuccin-mocha"
+vim.cmd.colorscheme = "kanagawa-wave"
 
 vim.opt.clipboard = "unnamedplus"
 
