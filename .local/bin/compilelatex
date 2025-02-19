@@ -26,4 +26,3 @@ fi
 # Run the compilation process with -shell-escape
 "$LATEX_COMPILER" -shell-escape "$FILENAME" && bibtex "$BASENAME" && \
 "$LATEX_COMPILER" -shell-escape "$FILENAME" && "$LATEX_COMPILER" -shell-escape "$FILENAME"
-
