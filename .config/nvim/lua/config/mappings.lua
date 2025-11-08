@@ -65,12 +65,12 @@ end, { desc = "DAP: Toggle Breakpoint" })
 vim.api.nvim_set_keymap("n", "<leader>dg", "<Cmd>DogeGenerate<CR>", { noremap = true, silent = true })
 
 -- Interactive mode comment todo-jumping
--- vim.keymap.set("n", "<TAB>", "<Plug>(doge-comment-jump-forward)")
--- vim.keymap.set("n", "<S-TAB>", "<Plug>(doge-comment-jump-backward)")
--- vim.keymap.set("i", "<TAB>", "<Plug>(doge-comment-jump-forward)")
--- vim.keymap.set("i", "<S-TAB>", "<Plug>(doge-comment-jump-backward)")
--- vim.keymap.set("x", "<TAB>", "<Plug>(doge-comment-jump-forward)")
--- vim.keymap.set("x", "<S-TAB>", "<Plug>(doge-comment-jump-backward)")
+vim.keymap.set("n", "<TAB>", "<Plug>(doge-comment-jump-forward)")
+vim.keymap.set("n", "<S-TAB>", "<Plug>(doge-comment-jump-backward)")
+vim.keymap.set("i", "<TAB>", "<Plug>(doge-comment-jump-forward)")
+vim.keymap.set("i", "<S-TAB>", "<Plug>(doge-comment-jump-backward)")
+vim.keymap.set("x", "<TAB>", "<Plug>(doge-comment-jump-forward)")
+vim.keymap.set("x", "<S-TAB>", "<Plug>(doge-comment-jump-backward)")
 
 -- Toggle spell language between English and Spanish
 vim.api.nvim_set_keymap("n", "<leader>ss", ":set spelllang=en<CR>", { noremap = true, silent = true })

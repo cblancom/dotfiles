@@ -1,4 +1,8 @@
 return {
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false, -- o event = "BufReadPre"
+	},
 	-- Plugin para instalar LSPs, formatters, etc.
 	{
 		"williamboman/mason.nvim",
@@ -73,7 +77,21 @@ return {
 						},
 					},
 				},
-				pyright = {},
+
+				pyright = {
+					settings = {
+						python = {
+							pythonPath = vim.fn.exepath("python"),
+						},
+						analysis = {
+							autoSearchPaths = true, -- Buscar automáticamente rutas de módulos
+							diagnosticMode = "workspace",
+							reportMissingImports = true, -- Detectar importaciones faltantes
+							reportMissingModuleSource = true, -- Detectar cuando un módulo no está en el entorno
+						},
+					},
+				},
+
 				ruff = {},
 				html = { filetypes = { "html", "twig", "hbs" } },
 				cssls = {},
@@ -86,10 +104,18 @@ return {
 			}
 
 			-- Configura cada servidor con `vim.lsp.config()` y activa con `vim.lsp.enable()`
+
+			-- local lspconfig = require("lspconfig")
+			--
+			-- for name, config in pairs(servers) do
+			-- 	config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
+			-- 	lspconfig[name].setup(config)
+			-- end
+
 			for name, config in pairs(servers) do
 				config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
-				vim.lsp.config(name, config)
-				vim.lsp.enable(name)
+				vim.lsp.config(name, config) -- define la configuración
+				vim.lsp.enable(name) -- habilita el servidor
 			end
 
 			-- Auto-mapeos al conectar LSP
